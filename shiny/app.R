@@ -9,20 +9,27 @@ ui <- fluidPage(
   # selectInput("dataset", label = "Dataset", choices= ls("package:datasets")),
   # verbatimTextOutput("summary"),
   # tableOutput("table")
-  numericInput("age","How old are you?", value=NA),
-  textInput("name","What's your name?"),
-  textOutput("gretting"),
-  tableOutput("mortgage")
+  # numericInput("age","How old are you?", value=NA),
+  # textInput("name","What's your name?"),
+  # textOutput("gretting"),
+  # tableOutput("mortgage")
+  
+  sliderInput("x", label = "if x is", min =1, max = 50, value = 30), 
+  "then x time 5 is", textOutput("product")
   )
 
 
 ##### Server
 server <- function(input,output,session){
   
-  output$gretting <- renderText({
-    paste0("Hello ", input$name)
+  output$product <- renderText({
+    product <- input$x * 5
   })
   
+  # output$gretting <- renderText({
+  #   paste0("Hello ", input$name)
+  # })
+  # 
   # output$histogram <- renderPlot({
   #   hist(rnorm(1000),res=96, input$age)
   # })
